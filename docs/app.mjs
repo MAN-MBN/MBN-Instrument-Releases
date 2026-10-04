@@ -38,6 +38,7 @@ export function selectDownloads(releases){
   });
 }
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sizeLabel=bytes=>bytes<1024*1024?`${(bytes/1024).toFixed(1)} KB`:`${(bytes/1024/1024).toFixed(1)} MB`;
 function render(releases){
   const selected=selectDownloads(releases);
   for(const group of ['software','firmware']){
@@ -46,7 +47,7 @@ function render(releases){
       const date=new Date(release.published_at).toLocaleDateString('zh-CN');
       const notes=typeof release.html_url==='string'&&release.html_url.startsWith(ROOT+'tag/')?release.html_url:ROOT;
       const hash=/^sha256:[a-f0-9]{64}$/i.test(asset.digest||'')?`<details class="hash"><summary>查看 SHA-256</summary><code>${escape(asset.digest.slice(7))}</code></details>`:'';
-      return `<article class="card"><div class="card-top"><span class="platform">${d.platform}</span>${release.prerelease?'<span class="badge">PREVIEW</span>':'<span class="badge">RELEASE</span>'}</div><h3>${d.title}</h3><p class="description">${d.description}</p><p class="version">${escape(release.tag_name)} · ${(asset.size/1024/1024).toFixed(1)} MB · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${d.button} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">SHA-256 校验文件</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">版本说明 ↗</a></div>${hash}</article>`;
+      return `<article class="card"><div class="card-top"><span class="platform">${d.platform}</span>${release.prerelease?'<span class="badge">PREVIEW</span>':'<span class="badge">RELEASE</span>'}</div><h3>${d.title}</h3><p class="description">${d.description}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${d.button} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">SHA-256 校验文件</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">版本说明 ↗</a></div>${hash}</article>`;
     }).join('')||'<p class="empty">暂无匹配的公开下载包。请稍后重试，或查看历史发布。</p>';
   }
   return selected.length;
