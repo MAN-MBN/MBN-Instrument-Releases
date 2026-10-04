@@ -1,2 +1,17 @@
 # MBN-Instrument-Releases
-Public Windows release packages and automatic-update feed for MBN Instrument.
+Public Windows/macOS release packages, firmware images, and automatic-update feeds for MBN Instrument.
+
+## Download website
+
+[MBN Instrument Download Center](https://man-mbn.github.io/MBN-Instrument-Releases/)
+
+Direct downloads for Windows, macOS, factory HEX and USB firmware packages,
+with SHA-256 links and the official ST-Link USB driver download reminder.
+The page queries public GitHub Releases on each visit and selects the highest
+semantic version that contains both the requested asset and its checksum.
+Preview releases are included and labeled. Update-channel releases are excluded.
+
+GitHub Pages publishes `main:/docs`. The site needs no build tools, external
+fonts, analytics, or secret tokens. `docs/releases.json` is a fallback snapshot
+for GitHub API outages/rate limits; refresh it when publishing if needed. The
+page explicitly labels fallback data instead of claiming it is current.

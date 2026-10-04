@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MBN Instrument 官方下载中心：最新 Windows、macOS 软件、STM32F407VG 固件 HEX 和 ST-Link 驱动。">
+  <meta name="theme-color" content="#101b2d"><title>MBN Instrument · 下载中心</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <header><a class="brand" href="./" aria-label="MBN Instrument 首页"><span class="brand-mark">M</span> MBN <span>INSTRUMENT</span></a><a class="nav-link" href="https://github.com/MAN-MBN/MBN-Instrument-Releases">GitHub ↗</a></header>
+  <main>
+    <section class="hero"><div class="eyebrow">SOFTWARE & FIRMWARE</div><h1>测量，从这里开始。</h1><p>MBN Instrument 下载中心<br>软件安装包与仪器固件，一处获取。</p><div class="status"><span class="dot"></span><span id="status" role="status">正在获取发布版本…</span></div></section>
+    <section aria-labelledby="software-title"><div class="section-heading"><h2 id="software-title">桌面软件</h2><span>选择你的操作系统</span></div><div id="software" class="grid" aria-live="polite"></div></section>
+    <aside class="driver"><div><span class="tag">WINDOWS · ST-LINK</span><h3>第一次使用 ST-Link？先安装 USB 驱动。</h3><p>软件已内置烧录工具，USB 驱动需另行安装。下载 ST 官方 STSW-LINK009，解压后按包内说明安装；Windows 可能请求管理员授权。</p></div><a class="button outline" href="https://www.st.com/en/development-tools/stsw-link009.html" target="_blank" rel="noopener noreferrer">下载官方驱动 ↗</a></aside>
+    <section aria-labelledby="firmware-title"><div class="section-heading"><h2 id="firmware-title">仪器固件</h2><span>确认硬件型号后再烧录</span></div><div id="firmware" class="grid" aria-live="polite"></div><div class="firmware-note"><strong>烧录前须知</strong><p>Factory HEX 通过 ST-Link 首次安装引导程序及应用；USB 更新包用于已安装兼容引导程序的仪器。当前 F4 开发固件面向 MBN STM32F407VG，实机烧录尚未验证。请在台架环境停止外部励磁，并保持供电和 SWD 连接。</p></div></section>
+    <section class="how"><div><span class="step">01</span><h3>安装软件</h3><p>Windows 运行安装器；macOS 打开 DMG 后拖入 Applications。系统要求以该版本说明为准。</p></div><div><span class="step">02</span><h3>连接仪器</h3><p>Windows 使用 ST-Link 前安装官方 USB 驱动，再连接对应探针和仪器。</p></div><div><span class="step">03</span><h3>后续直接更新</h3><p>软件内使用 Check Updates。网页打开时也会自动查询最新发布，无需翻找 Release。</p></div></section>
+    <noscript><p>请启用 JavaScript 获取最新版本。当前 rc5：<a href="https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.0-rc.5/MBN-Instrument-Setup.exe">Windows 安装包</a> · <a href="https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.0-rc.5/MBN-Instrument-macOS-arm64.dmg">macOS DMG</a> · <a href="https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.0-rc.5/MBN-F4-2.1.0-dev.factory.hex">Factory HEX</a></p></noscript>
+  </main><footer><span>MAN–MBN <span class="footer-muted">/ Magnetic Barkhausen Noise</span></span><a href="https://github.com/MAN-MBN/MBN-Instrument-Releases/releases">历史版本与完整发布说明 ↗</a></footer>
+</body></html>
