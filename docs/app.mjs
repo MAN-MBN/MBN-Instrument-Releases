@@ -1,3 +1,8 @@
+import { resolveLanguage, translate } from './i18n.mjs';
+let language = 'en';
+let lastReleases = [];
+let statusKey = 'loading';
+const t = key => translate(language, key);
 const REPO = 'MAN-MBN/MBN-Instrument-Releases';
 const ROOT = `https://github.com/${REPO}/releases/`;
 const definitions = [
@@ -44,20 +49,20 @@ function render(releases){
   for(const group of ['software','firmware']){
     document.getElementById(group).innerHTML=selected.filter(d=>d.group===group).map(d=>{
       const {release,asset,checksum}=d;
-      const date=new Date(release.published_at).toLocaleDateString('zh-CN');
+      const date=new Date(release.published_at).toLocaleDateString(language==='en'?'en-GB':'zh-CN');
       const notes=typeof release.html_url==='string'&&release.html_url.startsWith(ROOT+'tag/')?release.html_url:ROOT;
-      const hash=/^sha256:[a-f0-9]{64}$/i.test(asset.digest||'')?`<details class="hash"><summary>查看 SHA-256</summary><code>${escape(asset.digest.slice(7))}</code></details>`:'';
-      return `<article class="card"><div class="card-top"><span class="platform">${d.platform}</span>${release.prerelease?'<span class="badge">PREVIEW</span>':'<span class="badge">RELEASE</span>'}</div><h3>${d.title}</h3><p class="description">${d.description}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${d.button} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">SHA-256 校验文件</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">版本说明 ↗</a></div>${hash}</article>`;
-    }).join('')||'<p class="empty">暂无匹配的公开下载包。请稍后重试，或查看历史发布。</p>';
+      const hash=/^sha256:[a-f0-9]{64}$/i.test(asset.digest||'')?`<details class="hash"><summary>${escape(t('hash'))}</summary><code>${escape(asset.digest.slice(7))}</code></details>`:'';
+      return `<article class="card"><div class="card-top"><span class="platform">${d.platform}</span><span class="badge">${escape(t(release.prerelease?'preview':'stable'))}</span></div><h3>${escape(t(d.key+'.title'))}</h3><p class="description">${escape(t(d.key+'.description'))}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${escape(t(d.key+'.button'))} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">${escape(t('checksum'))}</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">${escape(t('notes'))}</a></div>${hash}</article>`;
+    }).join('')||`<p class="empty">${escape(t('empty'))}</p>`;
   }
   return selected.length;
 }
 async function refresh(){
-  const status=document.getElementById('status');let cached=false;
+  let cached=false;
   try{
     const response=await fetch('releases.json',{cache:'no-cache'});if(!response.ok)throw new Error('snapshot');
-    const snapshot=await response.json();cached=render(snapshot.releases)>0;
-    status.textContent=`已显示发布快照，正在检查更新…`;
+    const snapshot=await response.json();lastReleases=snapshot.releases;cached=render(lastReleases)>0;
+    setStatus('snapshot');
   }catch{}
   try{
     const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);const releases=[];
@@ -66,10 +71,33 @@ async function refresh(){
       if(!response.ok)throw new Error('API');const batch=await response.json();if(!Array.isArray(batch))throw new Error('data');
       releases.push(...batch);if(batch.length<100)break;
     }}finally{clearTimeout(timer);}
-    if(!render(releases))throw new Error('empty');
-    status.textContent='已同步 GitHub 最新发布 · 包含预览版本';
+    if(!selectDownloads(releases).length)throw new Error('empty');
+    lastReleases=releases;render(lastReleases);
+    setStatus('synced');
   }catch{
-    status.textContent=cached?'暂时无法检查最新版本，当前显示已保存的发布快照':'无法获取下载信息，请稍后刷新或查看历史版本';
+    setStatus(cached?'cached':'unavailable');
   }
 }
-if(typeof document!=='undefined')refresh();
+function setStatus(key){statusKey=key;document.getElementById('status').textContent=t(key);}
+function applyLanguage(next){
+  language=resolveLanguage(next);
+  document.documentElement.lang=language;
+  document.title=t('title');
+  document.querySelector('meta[name="description"]').content=t('meta');
+  document.querySelector('.brand').setAttribute('aria-label',t('home'));
+  document.querySelectorAll('[data-i18n]').forEach(element=>{element.textContent=t(element.dataset.i18n);});
+  document.getElementById('language').value=language;
+  setStatus(statusKey);
+  if(lastReleases.length)render(lastReleases);
+}
+if(typeof document!=='undefined'){
+  let saved;try{saved=localStorage.getItem('mbn-language');}catch{}
+  const requested=new URLSearchParams(location.search).get('lang');
+  applyLanguage(resolveLanguage(requested==='zh'?'zh-CN':requested||saved,navigator.languages||[navigator.language]));
+  document.getElementById('language').addEventListener('change',event=>{
+    applyLanguage(event.target.value);
+    try{localStorage.setItem('mbn-language',language);}catch{}
+    const url=new URL(location.href);url.searchParams.set('lang',language);history.replaceState(null,'',url);
+  });
+  refresh();
+}
