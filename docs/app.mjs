@@ -67,7 +67,7 @@ async function refresh(){
   try{
     const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);const releases=[];
     try{for(let page=1;page<=10;page++){
-      const response=await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100&page=${page}`,{signal:controller.signal,headers:{Accept:'application/vnd.github+json'}});
+      const response=await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100&page=${page}`,{cache:'no-cache',signal:controller.signal,headers:{Accept:'application/vnd.github+json'}});
       if(!response.ok)throw new Error('API');const batch=await response.json();if(!Array.isArray(batch))throw new Error('data');
       releases.push(...batch);if(batch.length<100)break;
     }}finally{clearTimeout(timer);}
