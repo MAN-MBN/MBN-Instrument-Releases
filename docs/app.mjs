@@ -11,7 +11,9 @@ const definitions = [
   {key:'x86_64',group:'software',pattern:/^MBN-Instrument-macOS-x86_64\.(dmg|pkg)$/,title:'macOS Intel',platform:'MACOS · INTEL',description:'适用于 Intel 芯片的 Mac。安装前请确认版本说明中的系统要求。',button:'下载 Intel 版本'},
   {key:'universal',group:'software',pattern:/^MBN-Instrument-macOS-universal\.(dmg|pkg)$/,title:'macOS Universal',platform:'MACOS · UNIVERSAL',description:'适用于 Apple Silicon 与 Intel Mac。系统要求以版本说明为准。',button:'下载通用版本'},
   {key:'hex',group:'firmware',pattern:/^MBN-F4-.*\.factory\.hex$/,title:'Factory HEX',platform:'STM32F407VG · ST-LINK',description:'首次安装或恢复仪器。包含引导程序与应用，使用 ST-Link 烧录。',button:'下载固件 HEX'},
-  {key:'usb',group:'firmware',pattern:/^MBN-F4-.*\.mbnfw$/,title:'USB 更新包',platform:'STM32F407VG · USB',description:'用于已安装兼容引导程序的仪器。通过软件的 Check Updates 安装。',button:'下载 USB 更新包'}
+  {key:'usb',group:'firmware',pattern:/^MBN-F4-.*\.mbnfw$/,title:'USB 更新包',platform:'STM32F407VG · USB',description:'用于已安装兼容引导程序的仪器。通过软件的 Check Updates 安装。',button:'下载 USB 更新包'},
+  {key:'h7hex',group:'firmware',pattern:/^MBN-H7-.*\.factory\.hex$/,platform:'STM32H743II · ST-LINK'},
+  {key:'h7usb',group:'firmware',pattern:/^MBN-H7-.*\.mbnfw$/,platform:'STM32H743II · USB'}
 ];
 export function compareVersions(a,b){
   const parse=v=>/^v?(\d+)\.(\d+)\.(\d+)(?:-([\w.-]+))?$/.exec(v);

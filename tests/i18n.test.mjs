@@ -19,7 +19,11 @@ assert.equal(resolveLanguage('zh-CN',['en-GB']),'zh-CN');
 assert.equal(resolveLanguage('invalid',['zh-CN']),'zh-CN');
 const data=JSON.parse(readFileSync(new URL('../docs/releases.json',import.meta.url),'utf8').replace(/^\uFEFF/,''));
 const downloads=selectDownloads(data.releases);
-assert.equal(downloads.length,4);
+assert.ok(downloads.some(d=>d.key==='h7hex'));
+assert.ok(downloads.some(d=>d.key==='h7usb'));
+assert.ok(downloads.some(d=>d.key==='hex'));
+assert.ok(downloads.some(d=>d.key==='usb'));
+for(const d of downloads.filter(d=>d.key.startsWith('h7')))assert.ok(d.asset.name.startsWith('MBN-H7-'));
 for(const d of downloads){
   assert.ok(messages.en[d.key+'.button']);
   assert.ok(messages.en[d.key+'.description']);
