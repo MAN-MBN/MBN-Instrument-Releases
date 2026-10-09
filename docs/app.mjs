@@ -1,4 +1,4 @@
-import { resolveLanguage, translate } from './i18n.mjs';
+import { resolveLanguage, translate } from './i18n.mjs?v=20261009-h7';
 let language = 'en';
 let lastReleases = [];
 let statusKey = 'loading';
@@ -54,7 +54,7 @@ function render(releases){
       const date=new Date(release.published_at).toLocaleDateString(language==='en'?'en-GB':'zh-CN');
       const notes=typeof release.html_url==='string'&&release.html_url.startsWith(ROOT+'tag/')?release.html_url:ROOT;
       const hash=/^sha256:[a-f0-9]{64}$/i.test(asset.digest||'')?`<details class="hash"><summary>${escape(t('hash'))}</summary><code>${escape(asset.digest.slice(7))}</code></details>`:'';
-      return `<article class="card"><div class="card-top"><span class="platform">${d.platform}</span><span class="badge">${escape(t(release.prerelease?'preview':'stable'))}</span></div><h3>${escape(t(d.key+'.title'))}</h3><p class="description">${escape(t(d.key+'.description'))}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${escape(t(d.key+'.button'))} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">${escape(t('checksum'))}</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">${escape(t('notes'))}</a></div>${hash}</article>`;
+      return `<article id="${escape(d.key)}" class="card"><div class="card-top"><span class="platform">${d.platform}</span><span class="badge">${escape(t(release.prerelease?'preview':'stable'))}</span></div><h3>${escape(t(d.key+'.title'))}</h3><p class="description">${escape(t(d.key+'.description'))}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${escape(t(d.key+'.button'))} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">${escape(t('checksum'))}</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">${escape(t('notes'))}</a></div>${hash}</article>`;
     }).join('')||`<p class="empty">${escape(t('empty'))}</p>`;
   }
   return selected.length;
