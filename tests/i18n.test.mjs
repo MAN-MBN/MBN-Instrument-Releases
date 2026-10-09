@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {messages,translate,resolveLanguage} from '../docs/i18n.mjs';
-import {selectDownloads,compareVersions} from '../docs/app.mjs';
+import {selectDownloads,compareVersions,downloadVersion} from '../docs/app.mjs';
 
 assert.deepEqual(Object.keys(messages.en).sort(),Object.keys(messages['zh-CN']).sort());
 for(const key of Object.keys(messages.en)){
@@ -31,3 +31,6 @@ for(const d of downloads){
 }
 assert.ok(compareVersions('v2.1.0-rc.15','v2.1.0-rc.5')>0);
 console.log('Passed: translation completeness, English text, static keys, language preference, release selection.');
+
+assert.equal(downloadVersion({group:"firmware",asset:{name:"MBN-H7-2.4.7.mbnfw"},release:{tag_name:"v2.1.0-rc.48"}}),"v2.4.7");
+assert.equal(downloadVersion({group:"software",asset:{name:"MBN-Instrument-Setup.exe"},release:{tag_name:"v2.1.0-rc.48"}}),"v2.1.0-rc.48");
