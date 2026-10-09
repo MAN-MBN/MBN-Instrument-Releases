@@ -57,6 +57,8 @@ function render(releases){
       return `<article id="${escape(d.key)}" class="card"><div class="card-top"><span class="platform">${d.platform}</span><span class="badge">${escape(t(release.prerelease?'preview':'stable'))}</span></div><h3>${escape(t(d.key+'.title'))}</h3><p class="description">${escape(t(d.key+'.description'))}</p><p class="version">${escape(release.tag_name)} · ${sizeLabel(asset.size)} · ${escape(date)}</p><a class="button" href="${escape(asset.browser_download_url)}">${escape(t(d.key+'.button'))} ↓</a><div class="links"><a href="${escape(checksum.browser_download_url)}">${escape(t('checksum'))}</a><a href="${escape(notes)}" target="_blank" rel="noopener noreferrer">${escape(t('notes'))}</a></div>${hash}</article>`;
     }).join('')||`<p class="empty">${escape(t('empty'))}</p>`;
   }
+  if(location.hash==='#h7hex' || location.hash==='#h7usb')
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'});
   return selected.length;
 }
 async function refresh(){
