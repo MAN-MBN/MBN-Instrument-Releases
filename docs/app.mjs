@@ -1,4 +1,4 @@
-import { resolveLanguage, translate } from './i18n.mjs?v=20261009-rc48';
+import { resolveLanguage, translate } from './i18n.mjs?v=20261009-fw248';
 let language = 'en';
 let lastReleases = [];
 let statusKey = 'loading';
