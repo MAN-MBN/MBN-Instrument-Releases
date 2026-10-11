@@ -34,3 +34,22 @@ console.log('Passed: translation completeness, English text, static keys, langua
 
 assert.equal(downloadVersion({group:"firmware",asset:{name:"MBN-H7-2.4.7.mbnfw"},release:{tag_name:"v2.1.0-rc.48"}}),"v2.4.7");
 assert.equal(downloadVersion({group:"software",asset:{name:"MBN-Instrument-Setup.exe"},release:{tag_name:"v2.1.0-rc.48"}}),"v2.1.0-rc.48");
+
+// Firmware is ranked by the version in its file name, not by the release tag:
+// H7 2.4.10 shipped in v2.1.1-rc.2, below the firmware-only tag v2.4.8.
+{
+  const asset=(tag,name)=>({name,browser_download_url:`https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/${tag}/${name}`});
+  const release=(tag,names)=>({tag_name:tag,draft:false,assets:names.flatMap(n=>[asset(tag,n),asset(tag,n+'.sha256')])});
+  const picked=selectDownloads([
+    release('v2.4.8',['MBN-F4-2.4.8.mbnfw','MBN-H7-2.4.8.mbnfw']),
+    release('v2.1.1-rc.2',['MBN-Instrument-Setup.exe','MBN-H7-2.4.10.mbnfw']),
+    release('v2.1.1-rc.1',['MBN-Instrument-Setup.exe'])]);
+  const by=key=>picked.find(d=>d.key===key);
+  assert.equal(by('h7usb').asset.name,'MBN-H7-2.4.10.mbnfw');
+  assert.equal(by('usb').asset.name,'MBN-F4-2.4.8.mbnfw');
+  assert.equal(by('windows').release.tag_name,'v2.1.1-rc.2');
+  const live=selectDownloads(data.releases);
+  assert.equal(live.find(d=>d.key==='h7usb').asset.name,'MBN-H7-2.4.10.mbnfw');
+  assert.equal(live.find(d=>d.key==='h7hex').asset.name,'MBN-H7-2.4.10.factory.hex');
+  console.log('Passed: firmware ranked by file-name version across release tags.');
+}

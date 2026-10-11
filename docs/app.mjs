@@ -1,4 +1,4 @@
-import { resolveLanguage, translate } from './i18n.mjs?v=20261011-rc212';
+import { resolveLanguage, translate } from './i18n.mjs?v=20261011-rc212b';
 let language = 'en';
 let lastReleases = [];
 let statusKey = 'loading';
@@ -35,13 +35,22 @@ export function selectDownloads(releases){
   const sorted=releases.filter(r=>!r.draft && /^v?\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(r.tag_name))
     .sort((a,b)=>compareVersions(b.tag_name,a.tag_name));
   return definitions.flatMap(def=>{
+    // Firmware ships beside whichever app release carries it (H7 2.4.10 is in
+    // v2.1.1-rc.2, below the firmware-only tag v2.4.8), so rank firmware by
+    // the version in its file name; the newest tag wins ties. Software keeps
+    // the newest tag that has the asset.
+    let best=null;
     for(const release of sorted){
       const assets=(release.assets||[]).filter(a=>def.pattern.test(a.name)&&trustedAsset(a)).sort((a,b)=>Number(b.name.endsWith('.dmg'))-Number(a.name.endsWith('.dmg')));
       for(const asset of assets){
         const checksum=(release.assets||[]).find(a=>a.name===asset.name+'.sha256'&&trustedAsset(a));
-        if(checksum)return [{...def,release,asset,checksum}];
+        if(!checksum)continue;
+        const candidate={...def,release,asset,checksum};
+        if(def.group!=='firmware')return [candidate];
+        if(!best||compareVersions(downloadVersion(candidate),downloadVersion(best))>0)best=candidate;
+        break;
       }
-    }return [];
+    }return best?[best]:[];
   });
 }
 export function downloadVersion(download){
