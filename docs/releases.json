@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-10-13T16:12:50.970145+00:00",
+  "synced_at": "2026-10-13T16:32:33.726328+00:00",
   "releases": [
     {
       "url": "https://api.github.com/repos/MAN-MBN/MBN-Instrument-Releases/releases/411837376",
@@ -36,7 +36,7 @@
       "immutable": false,
       "prerelease": true,
       "created_at": "2026-10-13T11:59:02Z",
-      "updated_at": "2026-10-13T16:12:20Z",
+      "updated_at": "2026-10-13T16:32:22Z",
       "published_at": "2026-10-13T15:35:32Z",
       "assets": [
         {
@@ -178,7 +178,7 @@
           "state": "uploaded",
           "size": 60760,
           "digest": "sha256:169b65f8ede1bca1b057d7113be355d6d1af47694c315037919b5fb48aecf24d",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-13T16:12:14Z",
           "updated_at": "2026-10-13T16:12:15Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-H7-2.4.11.mbnfw"
@@ -214,7 +214,7 @@
           "state": "uploaded",
           "size": 394,
           "digest": "sha256:e913a74263c94763c3f449cb61da7525a97113e5cc1470dcfe2c2c2d83a9922a",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-13T16:12:15Z",
           "updated_at": "2026-10-13T16:12:15Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-H7-2.4.11.mbnfw.json"
@@ -250,7 +250,7 @@
           "state": "uploaded",
           "size": 87,
           "digest": "sha256:4cd12f6242517f4b4a3c3c826268e9bdcd7a05bd751057bacb355fd19d9426cc",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-13T16:12:15Z",
           "updated_at": "2026-10-13T16:12:15Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-H7-2.4.11.mbnfw.sha256"
@@ -358,7 +358,7 @@
           "state": "uploaded",
           "size": 20911991,
           "digest": "sha256:2913e3024e4ce094233164982405a911b75e595053e8f65e8b7adfa0326f69c7",
-          "download_count": 0,
+          "download_count": 2,
           "created_at": "2026-10-13T16:12:14Z",
           "updated_at": "2026-10-13T16:12:18Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-Instrument-Setup.exe"
@@ -394,7 +394,7 @@
           "state": "uploaded",
           "size": 92,
           "digest": "sha256:255d5a7e7f38cdc5ea07c0a9840d48e4875ded3ae5ca740f9ec277628cc751f1",
-          "download_count": 0,
+          "download_count": 2,
           "created_at": "2026-10-13T16:12:14Z",
           "updated_at": "2026-10-13T16:12:15Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-Instrument-Setup.exe.sha256"
@@ -430,7 +430,7 @@
           "state": "uploaded",
           "size": 26974258,
           "digest": "sha256:aa5a78d6e605311f35030e2eb90afe5579ec8af40e3e7a7bbe64e89f6b1d198c",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-13T16:12:14Z",
           "updated_at": "2026-10-13T16:12:19Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-Instrument-Windows-x64-portable.zip"
@@ -466,7 +466,7 @@
           "state": "uploaded",
           "size": 106,
           "digest": "sha256:1fb096b1db301e43de6e61e43ec9380f8b4b9b80152ca048ddc242416f3bd1d0",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-13T16:12:14Z",
           "updated_at": "2026-10-13T16:12:15Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.5/MBN-Instrument-Windows-x64-portable.zip.sha256"
@@ -474,7 +474,7 @@
       ],
       "tarball_url": "https://api.github.com/repos/MAN-MBN/MBN-Instrument-Releases/tarball/v2.1.1-rc.5",
       "zipball_url": "https://api.github.com/repos/MAN-MBN/MBN-Instrument-Releases/zipball/v2.1.1-rc.5",
-      "body": "# MBN Instrument 2.1.1-rc.5 / H7 固件 2.4.11\n\n本版本同时提供 macOS（Apple 芯片，build 59）和 Windows 的 Qt 2.1.1-rc.5，以及 H7 固件 2.4.11。\n\n## Qt 2.1.1-rc.5\n\n- 图线不能再点击选中。之前点中的图线会加粗重画，数据量大时会卡死界面。拖动和缩放不受影响。\n- 串口诊断日志：采集期间如果超过 100 ms 没有收到 USB 数据，或者串口读取线程超过 100 ms 没有运行，会在诊断日志里记一条，包括间隔时长、线程状态和恢复后第一次读到的字节数，用来查 600 kSPS 下偶发的丢数据。数据流正常时不写日志。\n- 支持读取 H7 固件 2.4.11 的 USB 链路诊断（硬件测试工具使用，正常界面不使用）。\n\n## H7 固件 2.4.11\n\n- 新增 USB 链路诊断命令 GET_LINK_DIAGNOSTICS（0x47）：记录发送看门狗恢复次数、恢复时 IN 端点状态、最长发送时间等，用来区分主机停读和完成中断丢失。\n- 修复发送看门狗的竞态：完成中断恰好发生在两次读取之间时，看门狗会把已完成的传输误判为卡住并中止，600 kSPS 下约每秒 80 次（不丢数据，但可能是偶发丢包的诱因）。2.4.10 也有此问题。\n- 采集、控制和协议其余部分与 2.4.10 相同。\n\n## 下载\n\n- Windows：`MBN-Instrument-Setup.exe` 安装包，或将 `MBN-Instrument-Windows-x64-portable.zip` 完整解压后运行 MBN_beta.exe。\n- macOS：`MBN-Instrument-macOS-arm64.dmg` 用于首次安装；已安装的旧版可在程序内 Check Updates 更新，2.1.0-rc.40 到 2.1.1-rc.4 使用增量包，更早版本下载完整包。开发签名（ad-hoc），未经 Apple 公证，最低系统 macOS 27.0。\n- H7 固件：程序内固件更新会提供 2.4.11（`MBN-H7-2.4.11.mbnfw`）；新板子用 ST-Link 写 `MBN-H7-2.4.11.factory.hex`。F4 保持 2.4.8（见 v2.4.8）。\n\n## 验证\n\n- H7 2.4.11 用 Keil 构建（应用和 bootloader 均 0 错误 0 警告），主机回归测试在 -O0/-O3 下全部通过。\n- 实际 H7 裸板（无传感器、未开激励）经 USB 从 2.4.10 升级到 2.4.11，然后在 Windows 上做 600 kSPS 持续采集：4 通道 60 秒 1 次、7 通道 60 秒 2 次，均为 0 CRC 错误、0 包序号缺口、0 样本缺口、0 次超过 50 ms 的静默；7 通道 8.45 MB/s。链路诊断显示看门狗误中止计数全程为 0，采集期间没有任何恢复。\n- Windows Qt：六组离线回归（激励协议 57、流交叉校验 7、重组 12、ST-Link 5、阻抗 18、多线程采集 13）全部通过；ST-Link 有 2 项按条件跳过。需要窗口的控制恢复和固件更新两组本次在 Windows 上未运行。\n- macOS 上八组 Qt 测试全部通过（控制恢复 119 项，2 项在线检查按条件跳过）；rc.4 到 rc.5 的增量包能还原出完全一致的已签名应用。\n\nMac 上曾在 29 次 600 kSPS 测试中有 3 次丢 0.3–0.7 s 数据，Windows 上未复现过（2.4.10 在 Windows 上也是 0 丢失），2.4.11 在 Mac 上尚待复测。本版本为预发布开发版本。\n\n源码：[Qt 2.1.1-rc.5](https://github.com/MAN-MBN/MBN_Instrument_Original_Code/commit/278d35a) · [H7 2.4.11](https://github.com/MAN-MBN/MBN_H7_Firmware/commit/6ce0ede)\n"
+      "body": "# MBN Instrument 2.1.1-rc.5 / H7 固件 2.4.11\n\n本版本同时提供 macOS（Apple 芯片，build 59）和 Windows 的 Qt 2.1.1-rc.5，以及 H7 固件 2.4.11。\n\n## Qt 2.1.1-rc.5\n\n- 图线不能再点击选中。之前点中的图线会加粗重画，数据量大时会卡死界面。拖动和缩放不受影响。\n- 串口诊断日志：采集期间如果超过 100 ms 没有收到 USB 数据，或者串口读取线程超过 100 ms 没有运行，会在诊断日志里记一条，包括间隔时长、线程状态和恢复后第一次读到的字节数，用来查 600 kSPS 下偶发的丢数据。数据流正常时不写日志。\n- 支持读取 H7 固件 2.4.11 的 USB 链路诊断（硬件测试工具使用，正常界面不使用）。\n\n## H7 固件 2.4.11\n\n- 新增 USB 链路诊断命令 GET_LINK_DIAGNOSTICS（0x47）：记录发送看门狗恢复次数、恢复时 IN 端点状态、最长发送时间等，用来区分主机停读和完成中断丢失。\n- 修复发送看门狗的竞态：完成中断恰好发生在两次读取之间时，看门狗会把已完成的传输误判为卡住并中止，600 kSPS 下约每秒 80 次。这些误中止都发生在端点已空闲时，不丢数据，但会让诊断计数失真。2.4.10 也有此问题。\n- 采集、控制和协议其余部分与 2.4.10 相同。\n\n## 下载\n\n- Windows：`MBN-Instrument-Setup.exe` 安装包，或将 `MBN-Instrument-Windows-x64-portable.zip` 完整解压后运行 MBN_beta.exe。\n- macOS：`MBN-Instrument-macOS-arm64.dmg` 用于首次安装；已安装的旧版可在程序内 Check Updates 更新，2.1.0-rc.40 到 2.1.1-rc.4 使用增量包，更早版本下载完整包。开发签名（ad-hoc），未经 Apple 公证，最低系统 macOS 27.0。\n- H7 固件：程序内固件更新会提供 2.4.11（`MBN-H7-2.4.11.mbnfw`）；新板子用 ST-Link 写 `MBN-H7-2.4.11.factory.hex`。F4 保持 2.4.8（见 v2.4.8）。\n\n## 验证\n\n- H7 2.4.11 用 Keil 构建（应用和 bootloader 均 0 错误 0 警告），主机回归测试在 -O0/-O3 下全部通过。\n- 实际 H7 裸板（无传感器、未开激励）经 USB 从 2.4.10 升级到 2.4.11，然后在 Windows 上做 600 kSPS 持续采集：4 通道 60 秒 1 次、7 通道 60 秒 2 次，均为 0 CRC 错误、0 包序号缺口、0 样本缺口、0 次超过 50 ms 的静默；7 通道 8.45 MB/s。链路诊断显示看门狗误中止计数全程为 0，采集期间没有任何恢复。\n- Windows Qt：六组离线回归（激励协议 57、流交叉校验 7、重组 12、ST-Link 5、阻抗 18、多线程采集 13）全部通过；ST-Link 有 2 项按条件跳过。控制恢复 120 项、固件更新 21 项也全部通过，包括在线检查（从 GitHub 选中 v2.1.1-rc.5 并核对安装包 SHA-256），以及用本次 2.4.11 的 factory HEX 和 .mbnfw 做的交叉校验。\n- macOS 上八组 Qt 测试全部通过（控制恢复 119 项，2 项在线检查按条件跳过）；rc.4 到 rc.5 的增量包能还原出完全一致的已签名应用。\n\nMac 上曾在 29 次 600 kSPS 测试中有 3 次丢 0.3–0.7 s 数据，Windows 上未复现过（2.4.10 在 Windows 上也是 0 丢失）。用 2.4.11 的链路诊断在 Mac 上抓到的一次 0.67 s 丢失中，主机超过 250 ms 没有取走传输中的任何一个包，原因在主机一侧，与看门狗竞态无关：带竞态和修复后的版本在 Mac 上各测 40 次和 90 次，丢失率没有差别。Keil 构建的 2.4.11 在 Mac 上 600 kSPS 7 通道 10 次：0 丢失，采集期间看门狗恢复 0 次，ADC 中断最长 447–464 周期（预算 800）。本版本为预发布开发版本。\n\n源码：[Qt 2.1.1-rc.5](https://github.com/MAN-MBN/MBN_Instrument_Original_Code/commit/278d35a) · [H7 2.4.11](https://github.com/MAN-MBN/MBN_H7_Firmware/commit/6ce0ede)\n\n"
     },
     {
       "url": "https://api.github.com/repos/MAN-MBN/MBN-Instrument-Releases/releases/411624917",
@@ -948,7 +948,7 @@
           "state": "uploaded",
           "size": 28047650,
           "digest": "sha256:7ccbcecefc1e4d925542f0961d498bc638016a3e1e7cbb34ec9d31694e36bc29",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-12T16:56:48Z",
           "updated_at": "2026-10-12T16:56:50Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.3/MBN-Instrument-Windows-x64-portable.zip"
@@ -984,7 +984,7 @@
           "state": "uploaded",
           "size": 107,
           "digest": "sha256:fd1a8baafffe079e18700610245f20c15ac6fe4403ac5d3d2f1af0e3986efd30",
-          "download_count": 0,
+          "download_count": 1,
           "created_at": "2026-10-12T16:56:48Z",
           "updated_at": "2026-10-12T16:56:48Z",
           "browser_download_url": "https://github.com/MAN-MBN/MBN-Instrument-Releases/releases/download/v2.1.1-rc.3/MBN-Instrument-Windows-x64-portable.zip.sha256"
