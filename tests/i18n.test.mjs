@@ -51,6 +51,7 @@ assert.equal(downloadVersion({group:"software",asset:{name:"MBN-Instrument-Setup
   const live=selectDownloads(data.releases);
   assert.equal(live.find(d=>d.key==='h7usb').asset.name,'MBN-H7-2.4.11.mbnfw');
   assert.equal(live.find(d=>d.key==='h7hex').asset.name,'MBN-H7-2.4.11.factory.hex');
-  assert.equal(live.find(d=>d.key==='windows').release.tag_name,'v2.1.1-rc.6');
+  assert.equal(live.find(d=>d.key==='windows').release.tag_name,'v2.1.1-rc.7');
+  assert.equal(live.find(d=>d.key==='arm64').release.tag_name,'v2.1.1-rc.6');
   console.log('Passed: firmware ranked by file-name version across release tags.');
 }
